@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    <title>Weather Forecast</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  </head>
+  
+<body>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<nav class="navbar navbar-expand-md">
+  <a class="navbar-brand" href="#">Weather Forecast</a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+<main role="main" class="container">
+    <div class="starter-template">
+        <div class="container">
+		  <div class="row col-md-7 table-responsive">
+		    <table id="customerTable" class="table table-striped table-bordered">
+		      <thead class="thead-dark">
+		        <tr>
+		          <th>City Name</th>
+		          <th>Temperature</th>
+		          <th>Humidity</th>
+		          <th>Summary</th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		         <tr th:each="customer, rowStat: ${forecasts}"
+		            th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+		              <td th:text="${customer.cityName}"></td>
+		              <td th:text="${#numbers.formatDecimal(customer.temperature, 0, 'COMMA', 0, 'POINT')}+'°C'"></td>
+		              <td th:text="${customer.humidity}+'%'"></td>
+		              <td th:text="${customer.summary}"></td>
+		          </tr>
+		      </tbody>
+		    </table>
+		  </div>
+		</div>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
